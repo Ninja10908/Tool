@@ -1,0 +1,113 @@
+local Workspace = game:GetService("Workspace")
+local Players = game:GetService("Players")
+local HttpService = game:GetService("HttpService")
+
+local API_URL = "https://ninja12002.serv00.net/NEW/api.php"
+local PLACE_ID = "109983668079237"
+local PAID_THRESHOLD = 1
+
+if tostring(game.PlaceId) ~= PLACE_ID then return end
+
+local function isPrivateServer()
+    local success, result = pcall(function()
+        local map = Workspace:FindFirstChild("Map")
+        if not map then return false end
+        
+        local codes = map:FindFirstChild("Codes")
+        if not codes then return false end
+        
+        local main = codes:FindFirstChild("Main")
+        if not main then return false end
+        
+        local surfaceGui = main:FindFirstChild("SurfaceGui")
+        if not surfaceGui then return false end
+        
+        local mainFrame = surfaceGui:FindFirstChild("MainFrame")
+        if not mainFrame then return false end
+        
+        local privateMessage = mainFrame:FindFirstChild("PrivateServerMessage")
+        return privateMessage and privateMessage.Visible == true
+    end)
+    return success and result
+end
+
+if isPrivateServer() then
+    return
+end
+
+local encode_map_paid = {a="xR7", b="yS8", c="zT9", d="aU1", e="bV2", f="cW3", g="dX4", h="eY5", i="fZ6", j="gA7", k="hB8", l="iC9", m="jD1", n="kE2", o="lF3", p="mG4", q="nH5", r="oI6", s="pJ7", t="qK8", u="rL9", v="sM1", w="tN2", x="uO3", y="vP4", z="wQ5", A="R6x", B="S7y", C="T8z", D="U9a", E="V1b", F="W2c", G="X3d", H="Y4e", I="Z5f", J="A6g", K="B7h", L="C8i", M="D9j", N="E1k", O="F2l", P="G3m", Q="H4n", R="I5o", S="J6p", T="K7q", U="L8r", V="M9s", W="N1t", X="O2u", Y="P3v", Z="Q4w", ["0"]="5Rx", ["1"]="6Sy", ["2"]="7Tz", ["3"]="8Ua", ["4"]="9Vb", ["5"]="1Wc", ["6"]="2Xd", ["7"]="3Ye", ["8"]="4Zf", ["9"]="5Ag", ["-"]="6Bh"}
+
+local function encode_jobid(id, map)
+    local e = ""
+    for i = 1, #id do
+        local c = id:sub(i, i)
+        e = e .. (map[c] or "???")
+    end
+    return e
+end
+
+local function parseValue(text)
+    text = tostring(text or ""):gsub("%s", "")
+    local cleanText = text:gsub("/s", "")
+    local num, suffix = cleanText:match("([%d%.]+)([KkMmBbTt]?)")
+    if not num then return 0 end
+    local mults = {K=1e3, M=1e6, B=1e9, T=1e12}
+    return (tonumber(num) or 0) * (mults[(suffix or ""):upper()] or 1)
+end
+
+local function sendPetData(petData)
+    if #Players:GetPlayers() >= (Players.MaxPlayers or 0) then
+        return
+    end
+    
+    local payload = {
+        jobid = encode_jobid(game.JobId, encode_map_paid),
+        playerCount = #Players:GetPlayers() .. "/" .. (Players.MaxPlayers or "?"),
+        animalName = petData.display,
+        animalGen = petData.text,
+        animalValue = petData.value
+    }
+    
+    pcall(function()
+        request({
+            Url = API_URL,
+            Method = "POST",
+            Headers = {
+                ["Content-Type"] = "application/json",
+                ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+            },
+            Body = HttpService:JSONEncode(payload)
+        })
+    end)
+end
+
+local function scan()
+    local debris = Workspace:FindFirstChild("Debris")
+    if not debris then return end
+    for _, v in ipairs(debris:GetChildren()) do
+        if v.Name == "FastOverheadTemplate" then
+            local sg = v:FindFirstChildOfClass("SurfaceGui")
+            local gen = sg and sg:FindFirstChild("Generation", true)
+            if gen and gen.Text ~= "" then
+                local text = gen.Text
+                if text:find("/s") or text:find("K") or text:find("M") or text:find("B") or text:find("T") then
+                    local val = parseValue(text)
+                    if val >= PAID_THRESHOLD then
+                        local nameLabel = sg:FindFirstChild("DisplayName", true)
+                        sendPetData({
+                            display = nameLabel and nameLabel.Text or "Pet",
+                            text = gen.Text,
+                            value = val
+                        })
+                    end
+                end
+            end
+        end
+    end
+end
+
+task.spawn(function()
+    while task.wait(5) do 
+        pcall(scan)
+    end
+end)
