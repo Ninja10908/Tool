@@ -1,19 +1,115 @@
-local function notificationCallback(Text)
-    if Text == "باشە!" then
-        print("Welcome notification closed")
+local RS = game:GetService("RunService")
+local Players = game:GetService("Players")
+local Me = Players.LocalPlayer
+local rc = nil
+local spd = false
+local SPD = 28
+
+local function av(character)
+    local h = character:WaitForChild("Humanoid")
+    local r = character:WaitForChild("HumanoidRootPart")
+    if rc then rc:Disconnect() rc = nil end
+    rc = RS.RenderStepped:Connect(function()
+        if spd and r then
+            local dir = h.MoveDirection
+            if dir.Magnitude > 0 then
+                r.Velocity = Vector3.new(dir.X * SPD, r.Velocity.Y, dir.Z * SPD)
+            end
+        end
+    end)
+end
+
+Me.CharacterAdded:Connect(function(c)
+    if spd then
+        task.wait(0.3)
+        av(c)
+    end
+end)
+
+local gui = Instance.new("ScreenGui")
+gui.Name = "SpeedBoostGUI"
+gui.ResetOnSpawn = false
+gui.Parent = Me:WaitForChild("PlayerGui")
+
+local mainBtn = Instance.new("TextButton")
+mainBtn.Name = "SpeedBoostButton"
+mainBtn.Text = "Speed Boost"
+mainBtn.Size = UDim2.new(0, 80, 0, 30)
+mainBtn.Position = UDim2.new(1, -75, 0.5, -22)
+mainBtn.AnchorPoint = Vector2.new(1, 0.5)
+mainBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+mainBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+mainBtn.Font = Enum.Font.GothamBold
+mainBtn.TextSize = 12
+mainBtn.Parent = gui
+Instance.new("UICorner", mainBtn).CornerRadius = UDim.new(0, 6)
+
+local speedBox = Instance.new("TextBox")
+speedBox.Name = "SpeedBox"
+speedBox.Text = tostring(SPD)
+speedBox.Size = UDim2.new(0, 28, 0, 25)
+speedBox.Position = UDim2.new(1, -40, 0.5, -25)
+speedBox.AnchorPoint = Vector2.new(1, 0.5)
+speedBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+speedBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+speedBox.Font = Enum.Font.GothamBold
+speedBox.TextSize = 11
+speedBox.ClearTextOnFocus = true
+speedBox.Parent = gui
+Instance.new("UICorner", speedBox).CornerRadius = UDim.new(0, 4)
+
+local e = false
+
+local function f()
+    spd = true
+    if Me.Character then
+        av(Me.Character)
     end
 end
 
-local NotificationBindableFunction = Instance.new("BindableFunction")
-NotificationBindableFunction.OnInvoke = notificationCallback
-
-local function showWelcomeNotification()
-    game.StarterGui:SetCore("SendNotification", {
-        Title = "Kurd Hub";
-        Text = "سکریپتی بروکهەفن لە خوارەوەی بەشی هاکی یاریەکان ( هاکا ماپا ) دانراون";
-        Button1 = "باشە!";
-        Duration = 120;
-        Callback = NotificationBindableFunction;
-    })
+local function g()
+    spd = false
+    if rc then
+        rc:Disconnect()
+        rc = nil
+    end
 end
-showWelcomeNotification()
+
+mainBtn.MouseButton1Click:Connect(function()
+    e = not e
+    if e then
+        f()
+        mainBtn.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+        mainBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+    else
+        g()
+        mainBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        mainBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    end
+end)
+
+speedBox.FocusLost:Connect(function()
+    local val = tonumber(speedBox.Text)
+    if val then
+        SPD = val
+        speedBox.Text = tostring(SPD)
+    else
+        speedBox.Text = tostring(SPD)
+    end
+    if e then
+        g()
+        f()
+    end
+end)
+
+_G.speedBoostCleanup = function()
+    if gui and gui.Parent then
+        gui:Destroy()
+    end
+    spd = false
+    if rc then
+        rc:Disconnect()
+        rc = nil
+    end
+    _G.speedBoostCleanup = nil
+end
