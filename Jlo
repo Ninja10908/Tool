@@ -1,1 +1,274 @@
-([[This file was protected with MoonSec V3]]):gsub('.+', (function(a) _Ls_HsGfzXkyq = a; end)); return(function(h,...)local o;local r;local s;local d;local a;local t;local e=24915;local n=0;local l={};while n<659 do n=n+1;while n<0xe2 and e%0x21aa<0x10d5 do n=n+1 e=(e+601)%5075 local f=n+e if(e%0x18ba)>0xc5d then e=(e+0x349)%0x2c4b while n<0x24b and e%0x119c<0x8ce do n=n+1 e=(e-752)%23415 local f=n+e if(e%0x2dcc)<=0x16e6 then e=(e*0x349)%0x4af7 local e=88159 if not l[e]then l[e]=0x1 a="\4\8\116\111\110\117\109\98\101\114\75\103\122\73\89\75\104\86\0\6\115\116\114\105\110\103\4\99\104\97\114\84\75\83\107\72\90\108\98\0\6\115\116\114\105\110\103\3\115\117\98\67\84\109\103\119\120\71\119\0\6\115\116\114\105\110\103\4\98\121\116\101\111\75\118\75\101\74\65\115\0\5\116\97\98\108\101\6\99\111\110\99\97\116\103\83\67\77\74\107\77\116\0\5\116\97\98\108\101\6\105\110\115\101\114\116\69\66\103\70\66\73\107\102\5";end elseif e%2~=0 then e=(e+0x93)%0x31a4 local e=53940 if not l[e]then l[e]=0x1 end else e=(e+0x292)%0x4c58 n=n+1 local e=37305 if not l[e]then l[e]=0x1 t=function(t)local e=0x01 local function l(n)e=e+n return t:sub(e-n,e-0x01)end while true do local n=l(0x01)if(n=="\5")then break end local e=r.byte(l(0x01))local e=l(e)if n=="\2"then e=o.KgzIYKhV(e)elseif n=="\3"then e=e~="\0"elseif n=="\6"then d[e]=function(e,n)return h(8,nil,h,n,e)end elseif n=="\4"then e=d[e]elseif n=="\0"then e=d[e][l(r.byte(l(0x01)))];end local n=l(0x08)o[n]=e end end end end end elseif e%2~=0 then e=(e-0x357)%0x18e1 while n<0x68 and e%0x463a<0x231d do n=n+1 e=(e*621)%46163 local t=n+e if(e%0x4794)>0x23ca then e=(e*0x367)%0x1f8a local e=3331 if not l[e]then l[e]=0x1 d=(not d)and _ENV or d;end elseif e%2~=0 then e=(e*0x376)%0x8bdc local e=94496 if not l[e]then l[e]=0x1 s=tonumber;end else e=(e-0x1de)%0x5bfa n=n+1 local e=47022 if not l[e]then l[e]=0x1 d=getfenv and getfenv();end end end else e=(e*0x192)%0x2a9a n=n+1 while n<0x2cd and e%0x43f2<0x21f9 do n=n+1 e=(e+360)%23427 local d=n+e if(e%0x9de)>0x4ef then e=(e-0x3f3)%0x82a4 local e=48990 if not l[e]then l[e]=0x1 o={};end elseif e%2~=0 then e=(e*0xce)%0xa1a0 local e=29719 if not l[e]then l[e]=0x1 r=string;end else e=(e-0x174)%0xb62a n=n+1 local e=64211 if not l[e]then l[e]=0x1 end end end end end e=(e-146)%28493 end t(a);local e={};for n=0x0,0xff do local l=o.TKSkHZlb(n);e[n]=l;e[l]=n;end local function c(n)return e[n];end local r=(function(a,r)local f,l=0x01,0x10 local n={{},{},{}}local d=-0x01 local e=0x01 local t=a while true do n[0x03][o.CTmgwxGw(r,e,(function()e=f+e return e-0x01 end)())]=(function()d=d+0x01 return d end)()if d==(0x0f)then d=""l=0x000 break end end local d=#r while e<d+0x01 do n[0x02][l]=o.CTmgwxGw(r,e,(function()e=f+e return e-0x01 end)())l=l+0x01 if l%0x02==0x00 then l=0x00 o.EBgFBIkf(n[0x01],(c((((n[0x03][n[0x02][0x00]]or 0x00)*0x10)+(n[0x03][n[0x02][0x01]]or 0x00)+t)%0x100)));t=a+t;end end return o.gSCMJkMt(n[0x01])end);t(r(247,"}Kqx.{O0Sst89Ngkzg"));t(r(248,"Rdv+8>HNP%b2jMiSAPdHP2%8%b%%bHbN8j28jMjMMPMHibjHIdMMMMd+Id282M+_v2+d888j+288H+HPN%PbNSP>v%+>bP2v2d2ijj2S2v2jjvi+M=MM.Nbxbiv+vj+v+d+i+Si>>>>dHjH+N&HPHj%8%S%bPvPHbS>Z>jjMj%i8iYP>S8S8SMdPdPvH9bvv+S8P+b8v+PS8y8N+HMP8P>P>%j%dbjbdbb2j2Mj%jv2+ibi2MvSiS%b820v8vN+++j8v8d8i8S>b+iHNNvNbNNN+Hj+0+M28b%2vj8j>Hii>iHSAi%S+s+S8SvS>dv+>+v8bvSi8iiH>HHNuH%N+P+HH%db%%SPv%bj%jNH8HMi7ibi%SHs8rvibSNd8dSvHdvdjMjiH>2>>H8H>H2P8HvNd%PN8bSPjPj2+>PH8M>MdijiPPMSHk8kSdNvvB>+b}idH8%++HC8NSM"));local e=(83+(function()local o,d=0,1;(function(d,l,n,e)e(l(e,l,d,d),n(d,e and n,l,e),d(e and n,n and d,l,n),e(n,e,e,l))end)(function(l,t,e,n)if o>471 then return e end o=o+1 d=(d-723)%234 if(d%1390)>695 then d=(d-214)%22292 return n else return e(e(l,n,n and t,t),t(l,t,e,n and t),l(l,t,e,t)and l(e,n,n,e and e),e(n and e,l,t and n,t))end return e(l(t,e,n,n),l(n,l,e and n,n and n)and e(l,e,l,l),l(e,l,n,e)and n(e,t,e,t),t(e and l,l,n,e))end,function(l,t,n,e)if o>315 then return e end o=o+1 d=(d-880)%47644 if(d%330)<=165 then return l else return n(n(l,t,n,e),l(t,l and n,n,e),t(l,t,l and n,e)and e(e,l,e,e),t(e,n,l and n,n))end return l(l(t,t and t,l,n and n),l(t,l and e,l,e),e(n,t,e,n),e(t and n,n,e,t))end,function(t,e,l,n)if o>144 then return l end o=o+1 d=(d*332)%47744 if(d%560)>280 then return l else return n(e(n,e,n,l)and t(l,n,l,e),n(t,e,n,n and e),l(e,l,e and e,l and t),e(l,n,n,e))end return n(t(t,l and e,t,e),l(e,n,t,n and e),l(t,l,l,n)and e(l and t,t,n,e),t(e,l,n,n))end,function(t,e,n,l)if o>338 then return e end o=o+1 d=(d*706)%41286 if(d%976)>=488 then return n else return e(e(t,l,n,n),e(n,e,e,e),e(n,n,n,n),e(n,t,l,n))end return n(t(e,e,e,l),l(e and t,n,n,l),n(n,e,t,l),e(e and e,l,t,l))end)return d;end)())local u=o.FiygBRyo or o.TJEZujzW;local le=(getfenv)or(function()return _ENV end);local d=2;local ne=1;local a=4;local t=3;local function m(p,...)local c=r(e,"&9pEqQ1 7u5UR{HlQu5ql1q7uRpQEHu-HpuRl5qRu5HlM7ql59Ep l{1pq1{uqH7E8R wU15R(RR9H1HYaqu55U qQuHHp9H1URp9GQuuUHHq9Rl9{1{7Qlp11U7c5EUU W1q5u5llEHQRljE5uq 7{Q951RUH1l5Hp 1Q5j9{qEUq95q55lalQuERuM{HEh7pEU7 HQpl9H7 RJ9p1q.E  Ru95Q9UQSQQEuu#RQR5QlRq 5QRREl7R{HE97RU9E177{7U599QR5Hsgu59715U7H9Q9UpupOuEq71{7 HHqE uEupp5 l{q9lpR{Q99 Q q9115Uu9DQE5Et1quu557Q9uQlpE7qpR9EQ7 {7zl ERE{pQ57u55*qqRuHlx5HrEq uRl{QJ53Huqf7U 1R7951RRR9Y1pUqX11755lRqH59lpqqu1l5EU7R{HEY71{qp1 7{REQ1HRv9p11U1y7Q5{pllQw5plqqRu7HUERuqH>E17H{1p7 5{p9H 9Rp9q1RU7m5QR5l}}Qp5q.7q5u5HREHu HpEq71H5EH RRlp8 QRq9117{595QHU9ApQQ51l{q55HlEq=uQHqE 77{5pR H{{pp QR19U15URtH1iUqCqQ157l5qR5Zljqp5 H1E775{{pH79{ppq7RR7951RUl9<1pUq?1");local n=0;o.STkhqzge(function()n=n+1 end)local function e(l,e)if e then return n end;n=l+n;end local l,n,f=h(0,h,e,c,o.oKvKeJAs);local function r()local l,n=o.oKvKeJAs(c,e(1,3),e(5,6)+2);e(2);return(n*256)+l;end;local b=true;local b=0 local function k()local d=n();local e=n();local t=1;local d=(l(e,1,20)*(2^32))+d;local n=l(e,21,31);local e=((-1)^l(e,32));if(n==0)then if(d==b)then return e*0;else n=1;t=0;end;elseif(n==2047)then return(d==0)and(e*(1/0))or(e*(0/0));end;return o.vRbwxbbP(e,n-1023)*(t+(d/(2^52)));end;local g=n;local function j(n)local l;if(not n)then n=g();if(n==0)then return'';end;end;l=o.CTmgwxGw(c,e(1,3),e(5,6)+n-1);e(n)local e=""for n=(1+b),#l do e=e..o.CTmgwxGw(l,n,n)end return e;end;local b=#o.jFgjj_SD(s('\49.\48'))~=1 local e=n;local function m(...)return{...},o.JQpDwLDc('#',...)end local function z()local s={};local e={};local u={};local h={u,s,nil,e};local e=n()local c={}for d=1,e do local l=f();local e;if(l==0)then e=(f()~=#{});elseif(l==3)then local n=k();if b and o.XTtwjJFg(o.jFgjj_SD(n),'.(\48+)$')then n=o.MzFFqSxW(n);end e=n;elseif(l==2)then e=j();end;c[d]=e;end;for e=1,n()do s[e-(#{1})]=z();end;for h=1,n()do local e=f();if(l(e,1,1)==0)then local o=l(e,2,3);local f=l(e,4,6);local e={r(),r(),nil,nil};if(o==0)then e[t]=r();e[a]=r();elseif(o==#{1})then e[t]=n();elseif(o==p[2])then e[t]=n()-(2^16)elseif(o==p[3])then e[t]=n()-(2^16)e[a]=r();end;if(l(f,1,1)==1)then e[d]=c[e[d]]end if(l(f,2,2)==1)then e[t]=c[e[t]]end if(l(f,3,3)==1)then e[a]=c[e[a]]end u[h]=e;end end;h[3]=f();return h;end;local function y(l,n,e)local d=n;local d=e;return s(o.XTtwjJFg(o.XTtwjJFg(({o.STkhqzge(l)})[2],n),e))end local function ee(k,e,f)local function z(...)local r,z,s,y,p,l,c,_,j,b,g,n;local e=0;while-1<e do if 3>e then if e<1 then r=h(6,73,1,87,k);z=h(6,7,2,28,k);else if e~=1 then l=-41;c=-1;else s=h(6,51,3,94,k);p=m y=0;end end else if 5<=e then if e~=5 then e=-2;else n=h(7);end else if 1~=e then for n=20,53 do if 4~=e then _={};j={...};break;end;b=o.JQpDwLDc('#',...)-1;g={};break;end;else b=o.JQpDwLDc('#',...)-1;g={};end end end e=e+1;end;for e=0,b do if(e>=s)then _[e-s]=j[e+1];else n[e]=j[e+1];end;end;local e=b-s+1 local e;local o;local function h(...)while true do end end while true do if l<-40 then l=l+42 end e=r[l];o=e[ne];if 11<o then if o>=18 then if o<21 then if o>=19 then if 17~=o then for h=42,87 do if o>19 then local o,s,j,b,h;n[e[d]]=f[e[t]];l=l+1;e=r[l];o=e[d];s=n[e[t]];n[o+1]=s;n[o]=s[e[a]];l=l+1;e=r[l];n(e[d],e[t]);l=l+1;e=r[l];o=e[d]j,b=p(n[o](u(n,o+1,e[t])))c=b+o-1 h=0;for e=o,c do h=h+1;n[e]=j[h];end;l=l+1;e=r[l];o=e[d]n[o]=n[o](u(n,o+1,c))l=l+1;e=r[l];n[e[d]]();l=l+1;e=r[l];do return end;break;end;n(e[d],e[t]);break;end;else n(e[d],e[t]);end else local l=e[d]local d,e=p(n[l](u(n,l+1,e[t])))c=e+l-1 local e=0;for l=l,c do e=e+1;n[l]=d[e];end;end else if o>=22 then if o>18 then for l=41,63 do if 22~=o then n[e[d]]=(e[t]~=0);break;end;n[e[d]]=(e[t]~=0);break;end;else n[e[d]]=(e[t]~=0);end else local e=e[d]n[e]=n[e](u(n,e+1,c))end end else if 14<o then if o>=16 then if o>12 then repeat if 16~=o then local l=e[d];local d=n[e[t]];n[l+1]=d;n[l]=d[e[a]];break;end;for o=0,3 do if o<2 then if-4<=o then for a=42,67 do if o~=1 then n[e[d]]=(e[t]~=0);l=l+1;e=r[l];break;end;f[e[t]]=n[e[d]];l=l+1;e=r[l];break;end;else f[e[t]]=n[e[d]];l=l+1;e=r[l];end else if-2<o then repeat if o>2 then if(n[e[d]]~=e[a])then l=l+1;else l=e[t];end;break;end;n[e[d]]=f[e[t]];l=l+1;e=r[l];until true;else n[e[d]]=f[e[t]];l=l+1;e=r[l];end end end until true;else local d=e[d];local l=n[e[t]];n[d+1]=l;n[d]=l[e[a]];end else do return end;end else if 12<o then if o~=14 then n[e[d]]();else local l=e[d]local d,e=p(n[l](u(n,l+1,e[t])))c=e+l-1 local e=0;for l=l,c do e=e+1;n[l]=d[e];end;end else if(n[e[d]]~=e[a])then l=l+1;else l=e[t];end;end end end else if o<6 then if 3>o then if 0>=o then local e=e[d]n[e]=n[e](u(n,e+1,c))else if 2~=o then if(n[e[d]]~=e[a])then l=l+1;else l=e[t];end;else n[e[d]]=f[e[t]];end end else if o<4 then l=e[t];else if 1~=o then for l=34,85 do if 4<o then local l=e[d];local d=n[e[t]];n[l+1]=d;n[l]=d[e[a]];break;end;n[e[d]]=f[e[t]];break;end;else n[e[d]]=f[e[t]];end end end else if o>=9 then if o<=9 then f[e[t]]=n[e[d]];else if o==10 then l=e[t];else n[e[d]]();end end else if o<=6 then do return end;else if 4~=o then repeat if 8>o then f[e[t]]=n[e[d]];break;end;n(e[d],e[t]);until true;else n(e[d],e[t]);end end end end end l=1+l;end;end;return z end;local d=0xff;local f={};local o=(1);local t='';(function(n)local l=n local r=0x00 local e=0x00 l={(function(a)if r>0x1e then return a end r=r+1 e=(e+0x1293-a)%0x4e return(e%0x03==0x2 and(function(l)if not n[l]then e=e+0x01 n[l]=(0x53);d[2]=(d[2]*(y(function()f()end,u(t))-y(d[1],u(t))))+1;f[o]={};d=d[2];o=o+d;end return true end)'nanLH'and l[0x2](0x381+a))or(e%0x03==0x0 and(function(l)if not n[l]then e=e+0x01 n[l]=(0xf9);end return true end)'ETykz'and l[0x1](a+0x97))or(e%0x03==0x1 and(function(l)if not n[l]then e=e+0x01 n[l]=(0x12);end return true end)'FZOfD'and l[0x3](a+0xb6))or a end),(function(t)if r>0x23 then return t end r=r+1 e=(e+0x1037-t)%0x28 return(e%0x03==0x2 and(function(l)if not n[l]then e=e+0x01 n[l]=(0x7c);f[o]=le();o=o+d;end return true end)'zDRvD'and l[0x2](0xf2+t))or(e%0x03==0x0 and(function(l)if not n[l]then e=e+0x01 n[l]=(0xeb);end return true end)'JlCRJ'and l[0x1](t+0xab))or(e%0x03==0x1 and(function(l)if not n[l]then e=e+0x01 n[l]=(0xac);end return true end)'GTeXE'and l[0x3](t+0x2b8))or t end),(function(a)if r>0x23 then return a end r=r+1 e=(e+0xc2e-a)%0x1e return(e%0x03==0x2 and(function(l)if not n[l]then e=e+0x01 n[l]=(0xad);end return true end)'Tidnh'and l[0x2](0x229+a))or(e%0x03==0x0 and(function(l)if not n[l]then e=e+0x01 n[l]=(0xdd);t='\37';d={function()d()end};t=t..'\100\43';end return true end)'MFuGQ'and l[0x3](a+0x2f4))or(e%0x03==0x1 and(function(l)if not n[l]then e=e+0x01 n[l]=(0xe2);t={t..'\58 a',t};f[o]=z();o=o+(1);t[1]='\58'..t[1];d[2]=0xff;end return true end)'hChvU'and l[0x1](a+0x2a2))or a end)}l[0x3](0x541)end){};local e=ee(u(f));return e(...);end return m((function()local n={}local e=0x01;local l;if o.frFyMEsY then l=o.frFyMEsY(m)else l=''end if o.XTtwjJFg(l,o._JLJcHMo)then e=e+0;else e=e+1;end n[e]=0x02;n[n[e]+0x01]=0x03;return n;end)(),...)end)((function(n,e,l,t,d,o)local o;if 3>=n then if 2>n then if n>-2 then for o=11,76 do if n<1 then do return e(1),e(4,d,t,l,e),e(5,d,t,l)end;break;end;do return function(n,e,l)if l then local e=(n/2^(e-1))%2^((l-1)-(e-1)+1);return e-e%1;else local e=2^(e-1);return(n%(e+e)>=e)and 1 or 0;end;end;end;break;end;else do return e(1),e(4,d,t,l,e),e(5,d,t,l)end;end else if n~=-2 then repeat if n~=3 then do return 16777216,65536,256 end;break;end;do return e(1),e(4,d,t,l,e),e(5,d,t,l)end;until true;else do return 16777216,65536,256 end;end end else if 5>=n then if 3<n then for o=26,84 do if n>4 then local n=t;do return function()local e=e(l,n(n,n),n(n,n));n(1);return e;end;end;break;end;local n=t;local d,r,o=d(2);do return function()local e,a,t,l=e(l,n(n,n),n(n,n)+3);n(4);return(l*d)+(t*r)+(a*o)+e;end;end;break;end;else local n=t;local t,o,a=d(2);do return function()local r,d,l,e=e(l,n(n,n),n(n,n)+3);n(4);return(e*t)+(l*o)+(d*a)+r;end;end;end else if 7>n then do return d[l]end;else if n>=4 then for e=42,67 do if n>7 then do return l(n,nil,l);end break;end;do return setmetatable({},{['__\99\97\108\108']=function(e,l,d,t,n)if n then return e[n]elseif t then return e else e[l]=d end end})end break;end;else do return setmetatable({},{['__\99\97\108\108']=function(e,l,d,t,n)if n then return e[n]elseif t then return e else e[l]=d end end})end end end end end end),...)
+local Players=game:GetService("Players")
+local LocalPlayer=Players.LocalPlayer
+local ReplicatedStorage=game:GetService("ReplicatedStorage")
+local Workspace=game:GetService("Workspace")
+local RunService=game:GetService("RunService")
+local function WaitFor(path,timeout)
+timeout=timeout or 10
+local started=os.clock()
+local function left()
+if timeout <=0 then return 0 end
+return math.max(0,timeout - (os.clock() - started))
+end
+local segments={}
+if typeof(path)=="Instance" then
+return path
+elseif type(path)=="string" then
+local cleaned=path:gsub("^game[%.%/]","")
+for seg in cleaned:gmatch("[^%./]+") do
+table.insert(segments,seg)
+end
+elseif type(path)=="table" then
+segments=path
+else
+return nil
+end
+if #segments==0 then return nil end
+local current
+local first=segments[1]
+if first=="game" then
+current=game
+else
+local ok,svc=pcall(function() return game:GetService(first) end)
+if ok and svc then
+current=svc
+else
+current=game:WaitForChild(first,left())
+end
+end
+if not current then return nil end
+for i=2,#segments do
+local seg=segments[i]
+if seg=="LocalPlayer" and current==game:GetService("Players") then
+while not current.LocalPlayer and (timeout <=0 or (os.clock() - started) < timeout) do
+task.wait()
+end
+current=current.LocalPlayer
+elseif seg=="CurrentCamera" and current==game:GetService("Workspace") then
+while not current.CurrentCamera and (timeout <=0 or (os.clock() - started) < timeout) do
+task.wait()
+end
+current=current.CurrentCamera
+else
+current=current:WaitForChild(seg,left())
+end
+if not current then return nil end
+end
+return current
+end
+local Synchronizer=nil
+local syncModule=WaitFor("ReplicatedStorage.Packages.Synchronizer",30)
+if syncModule then
+pcall(function()
+Synchronizer=require(syncModule)
+end)
+end
+local Packages=ReplicatedStorage:WaitForChild("Packages")
+local Datas=ReplicatedStorage:WaitForChild("Datas")
+local Shared=ReplicatedStorage:WaitForChild("Shared")
+local Utils=ReplicatedStorage:WaitForChild("Utils")
+local AnimalsData=require(Datas:WaitForChild("Animals"))
+local AnimalsShared=require(Shared:WaitForChild("Animals"))
+local NumberUtils=require(Utils:WaitForChild("NumberUtils"))
+local allAnimalsCache={}
+local selectedTargetUID=nil
+local autoStealEnabled=true
+local PromptMemoryCache={}
+local function isMyBaseAnimal(animalData)
+if not animalData or not animalData.plot then return false end
+local plots=Workspace:FindFirstChild("Plots")
+if not plots then return false end
+local plot=plots:FindFirstChild(animalData.plot)
+if not plot then return false end
+local channel=Synchronizer:Get(plot.Name)
+if channel then
+local owner=channel:Get("Owner")
+if owner then
+if typeof(owner)=="Instance" and owner:IsA("Player") then return owner.UserId==LocalPlayer.UserId
+elseif typeof(owner)=="table" and owner.UserId then return owner.UserId==LocalPlayer.UserId end
+end
+end
+return false
+end
+local function findAdorneeGlobal(animalData)
+if not animalData then return nil end
+local plot=Workspace:FindFirstChild("Plots") and Workspace.Plots:FindFirstChild(animalData.plot)
+if plot then
+local podiums=plot:FindFirstChild("AnimalPodiums")
+if podiums then
+local podium=podiums:FindFirstChild(animalData.slot)
+if podium then
+local base=podium:FindFirstChild("Base")
+if base then
+local spawn=base:FindFirstChild("Spawn")
+if spawn then return spawn end
+return base:FindFirstChildWhichIsA("BasePart") or base
+end
+end
+end
+end
+return nil
+end
+local function findProximityPromptForAnimal(animalData)
+if not animalData then return nil end
+local cp=PromptMemoryCache[animalData.uid]
+if cp and cp.Parent then return cp end
+local plot=Workspace.Plots:FindFirstChild(animalData.plot)
+if not plot then return nil end
+local podiums=plot:FindFirstChild("AnimalPodiums")
+if not podiums then return nil end
+local podium=podiums:FindFirstChild(animalData.slot)
+if podium then
+local base=podium:FindFirstChild("Base")
+local spawn=base and base:FindFirstChild("Spawn")
+if spawn then
+local attach=spawn:FindFirstChild("PromptAttachment")
+if attach then
+for _,p in ipairs(attach:GetChildren()) do
+if p:IsA("ProximityPrompt") and p.ActionText=="Steal" then
+PromptMemoryCache[animalData.uid]=p
+return p
+end
+end
+end
+end
+end
+return nil
+end
+local function fireProximityPrompt(prompt)
+if not prompt or not prompt.Parent then return end
+if fireproximityprompt then
+fireproximityprompt(prompt)
+else
+prompt:InputHold(Enum.UserInputType.MouseButton1)
+task.wait(1.2)
+prompt:InputEnd(Enum.UserInputType.MouseButton1)
+end
+end
+local function attemptSteal(prompt,animalUID)
+if not prompt or not prompt.Parent then return false end
+fireProximityPrompt(prompt)
+return true
+end
+local function get_all_pets()
+local out={}
+for _,a in ipairs(allAnimalsCache) do
+if a.genValue >=1 and not isMyBaseAnimal(a) then
+table.insert(out,{
+petName=a.name,mpsText=a.genText,mpsValue=a.genValue,owner=a.owner,plot=a.plot,slot=a.slot,uid=a.uid,mutation=a.mutation,animalData=a
+})
+end
+end
+return out
+end
+local lastAnimalData={}
+local function getAnimalHash(al)
+if not al then return "" end
+local h=""
+for slot,d in pairs(al) do
+if type(d)=="table" then
+h=h .. tostring(slot) .. tostring(d.Index) .. tostring(d.Mutation)
+end
+end
+return h
+end
+local function scanSinglePlot(plot)
+local changed=false
+pcall(function()
+local ch=Synchronizer:Get(plot.Name)
+if not ch then return end
+local al=ch:Get("AnimalList")
+local hash=getAnimalHash(al)
+if lastAnimalData[plot.Name]==hash then return end
+lastAnimalData[plot.Name]=hash
+changed=true
+for i=#allAnimalsCache,1,-1 do
+if allAnimalsCache[i].plot==plot.Name then
+table.remove(allAnimalsCache,i)
+end
+end
+local owner=ch:Get("Owner")
+if not owner then return end
+local ownerName=owner.Name or "Unknown"
+if not al then return end
+for slot,ad in pairs(al) do
+if type(ad)=="table" then
+local aName,aInfo=ad.Index,AnimalsData[ad.Index]
+if aInfo then
+local mut=ad.Mutation or "None"
+if mut=="Yin Yang" then mut="YinYang" end
+local traits=(ad.Traits and #ad.Traits > 0) and table.concat(ad.Traits,",") or "None"
+local gv=AnimalsShared:GetGeneration(aName,ad.Mutation,ad.Traits,nil)
+local gt="$" .. NumberUtils:ToString(gv) .. "/s"
+table.insert(allAnimalsCache,{
+name=aInfo.DisplayName or aName,genText=gt,genValue=gv,mutation=mut,traits=traits,owner=ownerName,plot=plot.Name,slot=tostring(slot),uid=plot.Name .. "_" .. tostring(slot)
+})
+end
+end
+end
+end)
+if changed then
+table.sort(allAnimalsCache,function(a,b) return a.genValue > b.genValue end)
+end
+end
+local function setupPlotListener(plot)
+local ch=nil
+for retries=1,50 do
+local ok,r=pcall(function() return Synchronizer:Get(plot.Name) end)
+if ok and r then
+ch=r
+break
+end
+task.wait(0.1)
+end
+if not ch then return end
+scanSinglePlot(plot)
+plot.DescendantAdded:Connect(function() task.wait(0.1); scanSinglePlot(plot) end)
+plot.DescendantRemoving:Connect(function() task.wait(0.1); scanSinglePlot(plot) end)
+task.spawn(function()
+while plot.Parent do
+task.wait(5)
+scanSinglePlot(plot)
+end
+end)
+end
+local plots=Workspace:WaitForChild("Plots",8)
+if plots then
+for _,p in ipairs(plots:GetChildren()) do
+setupPlotListener(p)
+end
+plots.ChildAdded:Connect(function(p) task.wait(0.5); setupPlotListener(p) end)
+end
+local function stealNearestAnimal()
+local pets=get_all_pets()
+if #pets==0 then return end
+local char=LocalPlayer.Character
+local hrp=char and char:FindFirstChild("HumanoidRootPart")
+if not hrp then return end
+local bestDist=math.huge
+local nearestAnimal=nil
+for _,pet in ipairs(pets) do
+local targetPart=pet.animalData and findAdorneeGlobal(pet.animalData)
+if targetPart and targetPart:IsA("BasePart") then
+local d=(hrp.Position - targetPart.Position).Magnitude
+if d < bestDist then
+bestDist=d
+nearestAnimal=pet
+end
+end
+end
+if nearestAnimal then
+local pr=PromptMemoryCache[nearestAnimal.uid]
+if not pr or not pr.Parent then
+pr=findProximityPromptForAnimal(nearestAnimal.animalData)
+end
+if pr then
+attemptSteal(pr,nearestAnimal.uid)
+end
+end
+end
+RunService.Heartbeat:Connect(function()
+if autoStealEnabled then
+stealNearestAnimal()
+end
+end)
