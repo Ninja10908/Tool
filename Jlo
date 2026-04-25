@@ -74,6 +74,7 @@ local allAnimalsCache={}
 local selectedTargetUID=nil
 local autoStealEnabled=true
 local PromptMemoryCache={}
+local heartbeatConnection=nil
 local function isMyBaseAnimal(animalData)
 if not animalData or not animalData.plot then return false end
 local plots=Workspace:FindFirstChild("Plots")
@@ -267,8 +268,12 @@ attemptSteal(pr,nearestAnimal.uid)
 end
 end
 end
-RunService.Heartbeat:Connect(function()
+heartbeatConnection=RunService.Heartbeat:Connect(function()
 if autoStealEnabled then
 stealNearestAnimal()
 end
 end)
+_G.ToggleAutoSteal=function(enabled)
+autoStealEnabled=enabled
+end
+autoStealEnabled=true
