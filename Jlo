@@ -1,32 +1,22 @@
-local Players=game:GetService("Players")
-local Workspace=game:GetService("Workspace")
 local RunService=game:GetService("RunService")
-local LocalPlayer=Players.LocalPlayer
-local autoStealEnabled=true
-local promptCache={}
-local RAD=20
+local LocalPlayer=game:GetService("Players").LocalPlayer
+if not _G.sav2 then
+local function S(c) Char=c; HRP=c:WaitForChild("HumanoidRootPart",10) end
+if LocalPlayer.Character then S(LocalPlayer.Character) end
+LocalPlayer.CharacterAdded:Connect(function(c) task.wait(0.1); S(c) end)
+local en=true
+local RAD=10
 local RATE=0.06
-local stealConnection=nil
-local Char,HRP
-local function SetupCharacter(c)
-Char=c
-HRP=c:WaitForChild("HumanoidRootPart",10)
-end
-if LocalPlayer.Character then
-SetupCharacter(LocalPlayer.Character)
-end
-LocalPlayer.CharacterAdded:Connect(function(c)
-task.wait(0.1)
-SetupCharacter(c)
-end)
-local function GetPromptPosition(prompt)
+local conn=nil
+local timer=0
+local cache={}
+local function Own(p) return Char and p:IsDescendantOf(Char) end
+local function Pos(p)
 local pos
 pcall(function()
-local par=prompt.Parent
-if par:IsA("BasePart") then
-pos=par.Position
-elseif par:IsA("Attachment") then
-pos=par.WorldPosition
+local par=p.Parent
+if par:IsA("BasePart") then pos=par.Position
+elseif par:IsA("Attachment") then pos=par.WorldPosition
 elseif par:IsA("Model") then
 local pp=par.PrimaryPart or par:FindFirstChildWhichIsA("BasePart")
 if pp then pos=pp.Position end
@@ -37,140 +27,95 @@ end
 end)
 return pos
 end
-local yUp=0.1
-local yDown=12
-local function FindStealPrompt(targetPart)
-if not targetPart then return nil end
-local plots=Workspace:FindFirstChild("Plots")
-if not plots then return nil end
-local targetPos=targetPart.Position
-local radius=6
-for _,plot in pairs(plots:GetChildren()) do
-for _,dsc in pairs(plot:GetDescendants()) do
-if dsc:IsA("ProximityPrompt") and dsc.Enabled and dsc.ActionText=="Steal" then
-local promptPos=GetPromptPosition(dsc)
-if promptPos then
-local horizontalDist=math.sqrt((targetPos.X - promptPos.X)^2 + (targetPos.Z - promptPos.Z)^2)
-local verticalDistUp=promptPos.Y - targetPos.Y
-local verticalDistDown=targetPos.Y - promptPos.Y
-if horizontalDist < radius and verticalDistUp <=yUp and verticalDistDown <=yDown then
-return dsc
-end
-end
-end
-end
-end
-return nil
-end
-local function BuildPromptCache(prompt)
-if promptCache[prompt] then return end
-local d={holdFuncs={},triggerFuncs={},ready=true}
+local function Build(p)
+if cache[p] then return end
+local d={h={},t={},r=true}
 if getconnections then
-local ok1,c1=pcall(getconnections,prompt.PromptButtonHoldBegan)
+local ok1,c1=pcall(getconnections,p.PromptButtonHoldBegan)
 if ok1 and type(c1)=="table" then
-for _,cn in ipairs(c1) do
-if type(cn.Function)=="function" then
-table.insert(d.holdFuncs,cn.Function)
+for _,cn in ipairs(c1) do if type(cn.Function)=="function" then table.insert(d.h,cn.Function) end end
 end
-end
-end
-local ok2,c2=pcall(getconnections,prompt.Triggered)
+local ok2,c2=pcall(getconnections,p.Triggered)
 if ok2 and type(c2)=="table" then
-for _,cn in ipairs(c2) do
-if type(cn.Function)=="function" then
-table.insert(d.triggerFuncs,cn.Function)
+for _,cn in ipairs(c2) do if type(cn.Function)=="function" then table.insert(d.t,cn.Function) end end
 end
 end
+if #d.h > 0 or #d.t > 0 then cache[p]=d end
 end
-end
-if #d.holdFuncs > 0 or #d.triggerFuncs > 0 then
-promptCache[prompt]=d
-end
-end
-local function ExecutePrompt(prompt)
-local d=promptCache[prompt]
-if not d or not d.ready then return false end
-d.ready=false
+local function Exec(p)
+local d=cache[p]
+if not d or not d.r then return false end
+d.r=false
 task.spawn(function()
-for _,fn in ipairs(d.holdFuncs) do
-task.spawn(fn)
-end
+for _,fn in ipairs(d.h) do task.spawn(fn) end
 task.wait(0.1)
-for _,fn in ipairs(d.triggerFuncs) do
-task.spawn(fn)
-end
+for _,fn in ipairs(d.t) do task.spawn(fn) end
 task.wait(0.01)
-d.ready=true
+d.r=true
 end)
 return true
 end
-local function FirePrompt(prompt)
+local function Fire(p)
 local fired=false
 if fireproximityprompt then
-pcall(function()
-prompt.HoldDuration=0
-fireproximityprompt(prompt,0,0)
-fired=true
-end)
+pcall(function() p.HoldDuration=0; fireproximityprompt(p,0,0); fired=true end)
 end
 if fired then return end
 if getconnections then
-local ok,cs=pcall(getconnections,prompt.Triggered)
+local ok,cs=pcall(getconnections,p.Triggered)
 if ok and type(cs)=="table" then
-for _,c in ipairs(cs) do
-if c.Function then
-task.spawn(c.Function)
-end
-end
+for _,c in ipairs(cs) do if c.Function then task.spawn(c.Function) end end
 return
 end
 end
-pcall(function()
-prompt:InputHoldBegin()
-task.delay(0.05,function()
-pcall(function() prompt:InputHoldEnd() end)
-end)
-end)
+pcall(function() p:InputHoldBegin(); task.delay(0.05,function() pcall(function() p:InputHoldEnd() end) end) end)
 end
-local function AutoStealAll()
+local function Start()
+en=true
+timer=0
+cache={}
+if conn then conn:Disconnect() end
+conn=RunService.Heartbeat:Connect(function(dt)
+if not en then if conn then conn:Disconnect(); conn=nil end; return end
 if not HRP then return end
-local debris=Workspace:FindFirstChild("Debris")
-if not debris then return end
-for _,t in ipairs(debris:GetChildren()) do
-if t.Name=="FastOverheadTemplate" then
-local sg=t:FindFirstChildOfClass("SurfaceGui")
-if sg and sg.Adornee and sg.Adornee.Parent then
-local part=sg.Adornee
-if part and part:IsA("BasePart") then
-local stealPrompt=FindStealPrompt(part)
-if stealPrompt then
-local promptPos=GetPromptPosition(stealPrompt)
-if promptPos then
-local dist=(HRP.Position - promptPos).Magnitude
-if dist <=RAD then
-BuildPromptCache(stealPrompt)
-if not ExecutePrompt(stealPrompt) then
-FirePrompt(stealPrompt)
+local best,bestD=nil,RAD
+local plots=workspace:FindFirstChild("Plots")
+if plots then
+for _,plot in pairs(plots:GetChildren()) do
+for _,dsc in pairs(plot:GetDescendants()) do
+if dsc:IsA("ProximityPrompt") and dsc.Enabled and not Own(dsc) and dsc.ActionText=="Steal" then
+local pos=Pos(dsc)
+if pos then
+local d=(HRP.Position - pos).Magnitude
+if d < bestD then bestD=d; best=dsc end
 end
 end
 end
 end
 end
-end
-end
-end
-end
-local timer=0
-stealConnection=RunService.Heartbeat:Connect(function(dt)
-if autoStealEnabled then
+if best then
 timer=timer + dt
 if timer >=RATE then
 timer=0
-AutoStealAll()
+Build(best)
+if not Exec(best) then Fire(best) end
 end
+else
+timer=0
 end
 end)
-_G.ToggleAutoSteal=function(enabled)
-autoStealEnabled=enabled
+end
+local function Stop() en=false; if conn then conn:Disconnect(); conn=nil end end
+_G.ToggleAutoSteal=function(state)
+if state then
+if not en then Start() end
+else
+if en then Stop() end
+end
+end
+Start()
+_G.sav2=Stop
+else
+if _G.sav2 then pcall(_G.sav2) end
 end
 _G.ToggleAutoSteal(true)
