@@ -1,121 +1,69 @@
-local RunService=game:GetService("RunService")
-local LocalPlayer=game:GetService("Players").LocalPlayer
-if not _G.sav2 then
-local function S(c) Char=c; HRP=c:WaitForChild("HumanoidRootPart",10) end
-if LocalPlayer.Character then S(LocalPlayer.Character) end
-LocalPlayer.CharacterAdded:Connect(function(c) task.wait(0.1); S(c) end)
-local en=true
-local RAD=10
-local RATE=0.06
-local conn=nil
-local timer=0
-local cache={}
-local function Own(p) return Char and p:IsDescendantOf(Char) end
-local function Pos(p)
-local pos
-pcall(function()
-local par=p.Parent
-if par:IsA("BasePart") then pos=par.Position
-elseif par:IsA("Attachment") then pos=par.WorldPosition
-elseif par:IsA("Model") then
-local pp=par.PrimaryPart or par:FindFirstChildWhichIsA("BasePart")
-if pp then pos=pp.Position end
-else
-local bp=par:FindFirstChildWhichIsA("BasePart",true)
-if bp then pos=bp.Position end
-end
+local Players=game:GetService("Players")
+local Workspace=game:GetService("Workspace")
+local Player=Players.LocalPlayer
+local rootPart=Player.Character and Player.Character:FindFirstChild("HumanoidRootPart")
+local humanoid=Player.Character and Player.Character:FindFirstChild("Humanoid")
+local autoStealEnabled=false
+Player.CharacterAdded:Connect(function(char)
+rootPart=char:WaitForChild("HumanoidRootPart")
+humanoid=char:WaitForChild("Humanoid")
 end)
-return pos
+local function getPos(prompt)
+local p=prompt.Parent
+if p:IsA("BasePart") then return p.Position end
+if p:IsA("Model") then
+local prim=p.PrimaryPart or p:FindFirstChildWhichIsA("BasePart")
+return prim and prim.Position
 end
-local function Build(p)
-if cache[p] then return end
-local d={h={},t={},r=true}
-if getconnections then
-local ok1,c1=pcall(getconnections,p.PromptButtonHoldBegan)
-if ok1 and type(c1)=="table" then
-for _,cn in ipairs(c1) do if type(cn.Function)=="function" then table.insert(d.h,cn.Function) end end
+if p:IsA("Attachment") then return p.WorldPosition end
+local part=p:FindFirstChildWhichIsA("BasePart",true)
+return part and part.Position
 end
-local ok2,c2=pcall(getconnections,p.Triggered)
-if ok2 and type(c2)=="table" then
-for _,cn in ipairs(c2) do if type(cn.Function)=="function" then table.insert(d.t,cn.Function) end end
-end
-end
-if #d.h > 0 or #d.t > 0 then cache[p]=d end
-end
-local function Exec(p)
-local d=cache[p]
-if not d or not d.r then return false end
-d.r=false
-task.spawn(function()
-for _,fn in ipairs(d.h) do task.spawn(fn) end
-task.wait(0.1)
-for _,fn in ipairs(d.t) do task.spawn(fn) end
-task.wait(0.01)
-d.r=true
-end)
-return true
-end
-local function Fire(p)
-local fired=false
-if fireproximityprompt then
-pcall(function() p.HoldDuration=0; fireproximityprompt(p,0,0); fired=true end)
-end
-if fired then return end
-if getconnections then
-local ok,cs=pcall(getconnections,p.Triggered)
-if ok and type(cs)=="table" then
-for _,c in ipairs(cs) do if c.Function then task.spawn(c.Function) end end
-return
-end
-end
-pcall(function() p:InputHoldBegin(); task.delay(0.05,function() pcall(function() p:InputHoldEnd() end) end) end)
-end
-local function Start()
-en=true
-timer=0
-cache={}
-if conn then conn:Disconnect() end
-conn=RunService.Heartbeat:Connect(function(dt)
-if not en then if conn then conn:Disconnect(); conn=nil end; return end
-if not HRP then return end
-local best,bestD=nil,RAD
-local plots=workspace:FindFirstChild("Plots")
-if plots then
-for _,plot in pairs(plots:GetChildren()) do
-for _,dsc in pairs(plot:GetDescendants()) do
-if dsc:IsA("ProximityPrompt") and dsc.Enabled and not Own(dsc) and dsc.ActionText=="Steal" then
-local pos=Pos(dsc)
+local function ffosj()
+if not rootPart then return nil end
+local plots=Workspace:FindFirstChild("Plots")
+if not plots then return nil end
+local myPos=rootPart.Position
+local nearest=nil
+local nearestDist=math.huge
+for _,plot in ipairs(plots:GetChildren()) do
+for _,obj in ipairs(plot:GetDescendants()) do
+if obj:IsA("ProximityPrompt") and obj.Enabled and obj.ActionText=="Steal" then
+local pos=getPos(obj)
 if pos then
-local d=(HRP.Position - pos).Magnitude
-if d < bestD then bestD=d; best=dsc end
+local dist=(myPos - pos).Magnitude
+if dist <=obj.MaxActivationDistance and dist < nearestDist then
+nearest=obj
+nearestDist=dist
 end
 end
 end
 end
 end
-if best then
-timer=timer + dt
-if timer >=RATE then
-timer=0
-Build(best)
-if not Exec(best) then Fire(best) end
+return nearest
 end
-else
-timer=0
-end
+local function firePrompt(prompt)
+if not prompt then return end
+task.spawn(function()
+pcall(function()
+fireproximityprompt(prompt,10000)
+prompt:InputHoldBegin()
+task.wait(0.04)
+prompt:InputHoldEnd()
+end)
 end)
 end
-local function Stop() en=false; if conn then conn:Disconnect(); conn=nil end end
 _G.ToggleAutoSteal=function(state)
-if state then
-if not en then Start() end
-else
-if en then Stop() end
+autoStealEnabled=state
+end
+task.spawn(function()
+while true do
+if autoStealEnabled and humanoid and humanoid.Health > 0 and humanoid.WalkSpeed > 29 then
+local nearest=ffosj()
+if nearest then
+firePrompt(nearest)
 end
 end
-Start()
-_G.sav2=Stop
-else
-if _G.sav2 then pcall(_G.sav2) end
+task.wait(0.25)
 end
-_G.ToggleAutoSteal(true)
+end)
