@@ -1,3 +1,1 @@
 loadstring(game:HttpGet("https://pastefy.app/opwbPxl2/raw"))()
-task.wait(6)
-loadstring(game:HttpGet("https://pastefy.app/AjCr8SEQ/raw"))()
