@@ -1,1 +1,3 @@
 loadstring(game:HttpGet("https://pastefy.app/opwbPxl2/raw"))()
+task.wait(5)
+loadstring(game:HttpGet("https://pastefy.app/bnQpvCF3/raw"))()
